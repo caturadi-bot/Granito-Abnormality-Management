@@ -12,11 +12,6 @@ body{
   padding:20px;
   font-family:Arial, sans-serif;
   background:#f3e8ff;
-
-  /* penting */
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
 }
 
 .card{
@@ -26,6 +21,9 @@ body{
   padding:24px;
   border-radius:16px;
   text-align:center;
+
+  /* penting */
+  position:relative;
 }
 
 .logo{
@@ -48,16 +46,14 @@ button{
 .close{background:#6B7280}
 .dashboard{background:#E53935}
 
-/* spacer agar footer turun ke bawah */
-.spacer{
-  flex:1;
-}
-
-/* tulisan kiri bawah */
+/* footer di dalam card */
 .footer-credit{
-  font-size:12px;
-  color:#4B5563;
-  opacity:0.8;
+  position:absolute;
+  bottom:12px;
+  left:16px;
+  font-size:11px;
+  color:#6B7280;
+  opacity:0.7;
 }
 </style>
 </head>
@@ -85,14 +81,11 @@ button{
     onclick="openLink('https://drive.google.com/file/d/1TOBJIel2jwC8xzepHlXfH4HICm7-GH7H/view?usp=sharing')">
     Dashboard
   </button>
-</div>
 
-<!-- spacer -->
-<div class="spacer"></div>
-
-<!-- footer kiri bawah -->
-<div class="footer-credit">
-  Created by Operation Excellence
+  <!-- footer -->
+  <div class="footer-credit">
+    Created by Operation Excellence
+  </div>
 </div>
 
 <script>
