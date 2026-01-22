@@ -7,7 +7,7 @@
 <!-- WAJIB UNTUK APPS SCRIPT -->
 <base target="_top">
 
-<title>RB SHERA — Abnormality Management</title>
+<title>GRANITO — Abnormality Management</title>
 
 <style>
 body{
@@ -17,18 +17,30 @@ body{
   background:#f3e8ff;
 }
 
+  .page{
+  min-height: 100svh; /* ⬅ FIX UTAMA */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:
+    calc(env(safe-area-inset-top) + 16px)
+    16px
+    calc(env(safe-area-inset-bottom) + 16px);
+}
+
 .card{
-  max-width:460px;
-  margin:0 auto;
-  background:#fff;
-  padding:24px 24px 48px;
+  width:100%;
+  max-width:420px;
+  background:#ffffff;
+  padding:24px;
   border-radius:16px;
   text-align:center;
-  position:relative;
+  box-shadow:0 12px 28px rgba(0,0,0,0.12);
 }
 
 .logo{
-  width:180px;
+  width:160px;
   margin-bottom:16px;
 }
 
@@ -43,8 +55,7 @@ button{
   color:#fff;
   cursor:pointer;
 
-  transition:all 0.15s ease;
-  box-shadow:0 6px 14px rgba(0,0,0,0.18);
+   transition: transform .15s ease, opacity .15s ease;
 }
 
 .create{background:#1F2933}
@@ -83,17 +94,17 @@ button:active{
 
   <button class="create"
     onclick="openLink('https://docs.google.com/forms/d/e/1FAIpQLSdbm9pd9_rCP_u4E84QBQSaagYwFH4OspjQj-8vGZed7ui1uA/viewform')">
-    Create Abnormality
+     ➕ Create Abnormality
   </button>
 
   <button class="close"
     onclick="openLink('https://docs.google.com/forms/d/e/1FAIpQLSfVmpO0zBp7o8Gc-3csB1j_owkhY-4x7iuQOOBlRHxvMLAGDw/viewform')">
-    Closing Abnormality
+   ✅ Closing Abnormality
   </button>
 
   <button class="dashboard"
     onclick="openLink('https://drive.google.com/file/d/1TOBJIel2jwC8xzepHlXfH4HICm7-GH7H/view?usp=sharing')">
-    Dashboard
+   📊 Dashboard
   </button>
 
   <div class="footer-credit">
