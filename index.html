@@ -3,16 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- WAJIB UNTUK APPS SCRIPT -->
-<base target="_top">
-
 <title>GRANITO — Abnormality Management</title>
 
 <style>
-body{
+html, body{
   margin:0;
-  padding:20px;
+  padding:0;
   font-family:Arial, sans-serif;
   background:#f3e8ff;
 }
@@ -44,6 +40,16 @@ body{
   margin-bottom:16px;
 }
 
+  h2{
+  margin:8px 0 4px;
+  font-size:20px;
+}
+
+p{
+  margin:0 0 20px;
+  color:#555;
+}
+
 button{
   width:100%;
   padding:14px;
@@ -54,7 +60,6 @@ button{
   border-radius:10px;
   color:#fff;
   cursor:pointer;
-
    transition: transform .15s ease, opacity .15s ease;
 }
 
@@ -87,23 +92,25 @@ button:active{
 
 <div class="card">
   <img class="logo"
-    src="https://raw.githubusercontent.com/caturadi-bot/Granito_logo/main/logo%20granito.jpeg">
+    src="https://raw.githubusercontent.com/caturadi-bot/Granito_logo/main/logo%20granito.jpeg"
+    alt="Granito Logo">
+
 
   <h2>Abnormality Management</h2>
   <p>POLISH & SORTIR</p>
 
   <button class="create"
-    onclick="openLink('https://docs.google.com/forms/d/e/1FAIpQLSdbm9pd9_rCP_u4E84QBQSaagYwFH4OspjQj-8vGZed7ui1uA/viewform')">
+    onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdbm9pd9_rCP_u4E84QBQSaagYwFH4OspjQj-8vGZed7ui1uA/viewform')">
      ➕ Create Abnormality
   </button>
 
   <button class="close"
-    onclick="openLink('https://docs.google.com/forms/d/e/1FAIpQLSfVmpO0zBp7o8Gc-3csB1j_owkhY-4x7iuQOOBlRHxvMLAGDw/viewform')">
+    onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfVmpO0zBp7o8Gc-3csB1j_owkhY-4x7iuQOOBlRHxvMLAGDw/viewform')">
    ✅ Closing Abnormality
   </button>
 
   <button class="dashboard"
-    onclick="openLink('https://drive.google.com/file/d/1TOBJIel2jwC8xzepHlXfH4HICm7-GH7H/view?usp=sharing')">
+    onclick="window.open('https://drive.google.com/file/d/1TOBJIel2jwC8xzepHlXfH4HICm7-GH7H/view?usp=sharing')">
    📊 Dashboard
   </button>
 
@@ -111,12 +118,6 @@ button:active{
     Created by Operation Excellence
   </div>
 </div>
-
-<script>
-function openLink(url){
-  window.location.href = url;
-}
-</script>
 
 </body>
 </html>
