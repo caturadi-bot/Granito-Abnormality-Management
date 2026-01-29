@@ -1,133 +1,187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GRANITO — Abnormality Management</title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GRANITO — Abnormality Management (Selector)</title>
+  <meta name="description" content="Landing page selector untuk Body Preparation, Press Kiln, dan Polish & Sortir. Single-file ready for GitHub Pages.">
   <style>
-    /* RESET DASAR */
-    * {
-      box-sizing: border-box;
-    }
+    *{ box-sizing:border-box }
+    html,body{ margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; background:#f3e8ff; color:#111 }
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3e8ff;
+    /* WRAPPER */
+    .page{ min-height:100svh; display:flex; align-items:center; justify-content:center; padding:calc(env(safe-area-inset-top) + 16px) 16px calc(env(safe-area-inset-bottom) + 16px); }
+    .card{ width:100%; max-width:420px; background:#fff; padding:24px; border-radius:16px; text-align:center; box-shadow:0 12px 28px rgba(0,0,0,0.12); position:relative }
+    .logo{ width:160px; margin-bottom:12px }
+    h2{ margin:8px 0 4px; font-size:20px }
+    p{ margin:0 0 18px; color:#555 }
 
-      /* CENTER PALING AMAN */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      
-       padding:
-    calc(env(safe-area-inset-top) + 16px)
-    16px
-    calc(env(safe-area-inset-bottom) + 16px);
-}
-    
-    
+    /* Buttons */
+    .btn{ width:100%; padding:14px; margin-bottom:12px; font-size:16px; font-weight:700; border:none; border-radius:10px; color:#fff; cursor:pointer; transition:transform .12s ease,opacity .12s ease }
+    .btn:active{ transform:scale(.98); opacity:.95 }
 
-    .card {
-      width: 100%;
-      max-width: 420px;
-      background: #ffffff;
-      padding: 24px;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-      position: relative;
-    }
+    .primary{ background:#1F2933 }
+    .muted{ background:#6B7280 }
+    .accent{ background:#E53935 }
+    .gray{ background:#9CA3AF }
 
-    .logo {
-      width: 160px;
-      margin-bottom: 16px;
-    }
+    .split{ display:grid; grid-template-columns:1fr 1fr; gap:10px }
+    .small{ padding:10px; font-size:14px }
 
-    h2 {
-      margin: 8px 0 4px;
-      font-size: 20px;
-    }
+    .footer-credit{ position:absolute; bottom:12px; left:16px; font-size:11px; color:#6B7280; opacity:.85 }
 
-    p {
-      margin: 0 0 20px;
-      color: #555;
-    }
+    /* hide pages */
+    .view{ display:none }
+    .view.active{ display:block }
 
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      color: #fff;
-      cursor: pointer;
-    }
-    button:active{
-      transform: scale(0.96);
-      opacity:0.9;
-    }
+    /* back link */
+    .back{ background:transparent; border:0; color:#6B7280; font-weight:600; cursor:pointer }
 
-    .create {
-      background: #1F2933;
-    }
+    .note{ font-size:13px; color:#6B7280; margin-top:8px }
 
-    .close {
-      background: #6B7280;
-    }
-
-    .dashboard {
-      background: #E53935;
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-
-    .footer-credit {
-      margin-top: 12px;
-      font-size: 11px;
-      color: #6B7280;
-      opacity: 0.7;
-    }
+    @media (min-width:720px){ .card{ padding:32px } }
   </style>
 </head>
-
 <body>
 
+<div class="page">
   <div class="card">
-    <img
-      class="logo"
-      src="https://raw.githubusercontent.com/caturadi-bot/Granito_logo/main/logo%20granito.jpeg"
-      alt="Granito Logo"
-    >
 
-    <h2>Abnormality Management</h2>
-    <p>POLISH & SORTIR</p>
+    <!-- LOGO -->
+    <img class="logo" src="https://raw.githubusercontent.com/caturadi-bot/Granito_logo/main/logo%20granito.jpeg" alt="Granito Logo">
 
-    <button class="create"
-      onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdbm9pd9_rCP_u4E84QBQSaagYwFH4OspjQj-8vGZed7ui1uA/viewform')">
-      ➕ Create Abnormality
-    </button>
+    <!-- SELECTOR VIEW -->
+    <div id="view-selector" class="view active">
+      <h2>Pilih Line</h2>
+      <p>Pilih line untuk masuk ke landing page Abnormality Management.</p>
 
-    <button class="close"
-      onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfVmpO0zBp7o8Gc-3csB1j_owkhY-4x7iuQOOBlRHxvMLAGDw/viewform')">
-      ✅ Closing Abnormality
-    </button>
+      <div class="split">
+        <button class="btn primary" id="to-body">🧰 Body Preparation</button>
+        <button class="btn muted" id="to-press">🔥 Press Kiln</button>
+      </div>
 
-    <button class="dashboard"
-      onclick="window.open('https://drive.google.com/file/d/1TOBJIel2jwC8xzepHlXfH4HICm7-GH7H/view?usp=sharing')">
-      📊 Dashboard
-    </button>
+      <button class="btn accent" id="to-polish">🔧 Polish & Sortir</button>
 
-    <div class="footer-credit">
-      Created by Operation Excellence
+      <p class="note">Tip: langsung ke link dengan <code>?area=body</code>, <code>?area=press</code>, atau <code>?area=polish</code>.</p>
     </div>
-  </div>
 
+    <!-- BODY PREPARATION VIEW -->
+    <div id="view-body" class="view">
+      <h2>Abnormality Management</h2>
+      <p>Body Preparation</p>
+
+      <button class="btn primary" id="body-create">➕ Create Abnormality</button>
+      <button class="btn muted" id="body-close">✅ Closing Abnormality</button>
+      <button class="btn gray" id="body-dashboard">📊 Dashboard</button>
+
+      <div style="height:8px"></div>
+      <button class="back small" id="back-from-body">← Kembali ke pilihan</button>
+      <div class="footer-credit">Created by Operation Excellence</div>
+    </div>
+
+    <!-- PRESS KILN VIEW -->
+    <div id="view-press" class="view">
+      <h2>Abnormality Management</h2>
+      <p>Press Kiln</p>
+
+      <button class="btn primary" id="press-create">➕ Create Abnormality</button>
+      <button class="btn muted" id="press-close">✅ Closing Abnormality</button>
+      <button class="btn gray" id="press-dashboard">📊 Dashboard</button>
+
+      <div style="height:8px"></div>
+      <button class="back small" id="back-from-press">← Kembali ke pilihan</button>
+      <div class="footer-credit">Created by Operation Excellence</div>
+    </div>
+
+    <!-- POLISH & SORTIR VIEW -->
+    <div id="view-polish" class="view">
+      <h2>Abnormality Management</h2>
+      <p>Polish & Sortir</p>
+
+      <button class="btn primary" id="polish-create">➕ Create Abnormality</button>
+      <button class="btn muted" id="polish-close">✅ Closing Abnormality</button>
+      <button class="btn gray" id="polish-dashboard">📊 Dashboard</button>
+
+      <div style="height:8px"></div>
+      <button class="back small" id="back-from-polish">← Kembali ke pilihan</button>
+      <div class="footer-credit">Created by Operation Excellence</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  /* ======== CONFIG: gform / links ========
+     Ganti value di bawah sesuai link Google Form / Dashboard Anda.
+  */
+  const CONFIG = {
+    body: {
+      create: 'https://docs.google.com/forms/d/e/1FAIpQLSdbb3e2qqIo_kJ9_wQWpA4jOnnskY5HMxbe2jzeAGeqWnbm_g/viewform?usp=dialog',
+      close:  'https://docs.google.com/forms/d/e/1FAIpQLSdkV1RIGyv2qPPuTWmplMM7EKOIhXaerDcwJsYmwLn7MPn6Gg/viewform?usp=dialog',
+      dashboard: 'https://drive.google.com/file/d/1TOBJIel2jwC8xzepHlXfH4HICm7-GH7H/view?usp=sharing'
+    },
+    press: {
+      create: 'https://docs.google.com/forms/d/REPLACE_PRESS_CREATE/viewform',
+      close:  'https://docs.google.com/forms/d/REPLACE_PRESS_CLOSE/viewform',
+      dashboard: 'https://drive.google.com/file/d/REPLACE_PRESS_DASHBOARD/view'
+    },
+    polish: {
+      create: 'https://docs.google.com/forms/d/REPLACE_POLISH_CREATE/viewform',
+      close:  'https://docs.google.com/forms/d/REPLACE_POLISH_CLOSE/viewform',
+      dashboard: 'https://drive.google.com/file/d/REPLACE_POLISH_DASHBOARD/view'
+    }
+  };
+
+  /* ======== small router / view control ======== */
+  const views = {
+    selector: document.getElementById('view-selector'),
+    body: document.getElementById('view-body'),
+    press: document.getElementById('view-press'),
+    polish: document.getElementById('view-polish')
+  };
+
+  function showView(name, pushState = true){
+    Object.values(views).forEach(v => v.classList.remove('active'));
+    views[name].classList.add('active');
+    if(pushState) history.replaceState(null, '', '?' + new URLSearchParams({ area: name }).toString());
+  }
+
+  // init button wiring
+  document.getElementById('to-body').addEventListener('click', ()=> showView('body'));
+  document.getElementById('to-press').addEventListener('click', ()=> showView('press'));
+  document.getElementById('to-polish').addEventListener('click', ()=> showView('polish'));
+
+  // back buttons
+  document.getElementById('back-from-body').addEventListener('click', ()=> showView('selector'));
+  document.getElementById('back-from-press').addEventListener('click', ()=> showView('selector'));
+  document.getElementById('back-from-polish').addEventListener('click', ()=> showView('selector'));
+
+  // body buttons
+  document.getElementById('body-create').addEventListener('click', ()=> window.open(CONFIG.body.create, '_blank'));
+  document.getElementById('body-close').addEventListener('click', ()=> window.open(CONFIG.body.close, '_blank'));
+  document.getElementById('body-dashboard').addEventListener('click', ()=> window.open(CONFIG.body.dashboard, '_blank'));
+
+  // press buttons
+  document.getElementById('press-create').addEventListener('click', ()=> window.open(CONFIG.press.create, '_blank'));
+  document.getElementById('press-close').addEventListener('click', ()=> window.open(CONFIG.press.close, '_blank'));
+  document.getElementById('press-dashboard').addEventListener('click', ()=> window.open(CONFIG.press.dashboard, '_blank'));
+
+  // polish buttons
+  document.getElementById('polish-create').addEventListener('click', ()=> window.open(CONFIG.polish.create, '_blank'));
+  document.getElementById('polish-close').addEventListener('click', ()=> window.open(CONFIG.polish.close, '_blank'));
+  document.getElementById('polish-dashboard').addEventListener('click', ()=> window.open(CONFIG.polish.dashboard, '_blank'));
+
+  // on load: check query param area for direct link
+  (function(){
+    try{
+      const params = new URLSearchParams(location.search);
+      const area = (params.get('area') || '').toLowerCase();
+      if(area === 'body' || area === 'press' || area === 'polish'){
+        showView(area, false);
+      }
+    }catch(e){ /* ignore */ }
+  })();
+
+</script>
 </body>
 </html>
