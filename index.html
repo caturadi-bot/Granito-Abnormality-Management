@@ -3,43 +3,96 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>GRANITO — Abnormality Management (Selector)</title>
-  <meta name="description" content="Landing page selector untuk Body Preparation, Press Kiln, dan Polish & Sortir. Single-file ready for GitHub Pages.">
+  <title>GRANITO — Abnormality Management</title>
+
   <style>
     *{ box-sizing:border-box }
-    html,body{ margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; background:#f3e8ff; color:#111 }
+    html,body{ margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; background:#f3e8ff }
 
     /* WRAPPER */
-    .page{ min-height:100svh; display:flex; align-items:center; justify-content:center; padding:calc(env(safe-area-inset-top) + 16px) 16px calc(env(safe-area-inset-bottom) + 16px); }
-    .card{ width:100%; max-width:420px; background:#fff; padding:24px; border-radius:16px; text-align:center; box-shadow:0 12px 28px rgba(0,0,0,0.12); position:relative }
-    .logo{ width:160px; margin-bottom:12px }
+    .page{
+      min-height:100svh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:
+        calc(env(safe-area-inset-top) + 16px)
+        16px
+        calc(env(safe-area-inset-bottom) + 16px);
+    }
+
+    .card{
+      width:100%;
+      max-width:420px;
+      background:#fff;
+      padding:24px;
+      border-radius:16px;
+      text-align:center;
+      box-shadow:0 12px 28px rgba(0,0,0,.12);
+      position:relative;
+    }
+
+    .logo{ width:160px; margin-bottom:14px }
     h2{ margin:8px 0 4px; font-size:20px }
     p{ margin:0 0 18px; color:#555 }
 
-    /* Buttons */
-    .btn{ width:100%; padding:14px; margin-bottom:12px; font-size:16px; font-weight:700; border:none; border-radius:10px; color:#fff; cursor:pointer; transition:transform .12s ease,opacity .12s ease }
-    .btn:active{ transform:scale(.98); opacity:.95 }
+    /* BUTTONS */
+    .btn{
+      width:100%;
+      padding:14px;
+      margin-bottom:12px;
+      font-size:16px;
+      font-weight:700;
+      border:none;
+      border-radius:10px;
+      color:#fff;
+      cursor:pointer;
+      transition:transform .12s ease, opacity .12s ease;
+    }
+    .btn:active{ transform:scale(.97); opacity:.9 }
 
     .primary{ background:#1F2933 }
     .muted{ background:#6B7280 }
     .accent{ background:#E53935 }
     .gray{ background:#9CA3AF }
 
+    /* BACK BUTTON — DITONJOLKAN */
+    .back-wrap{
+      margin-top:16px;
+      padding-top:12px;
+      border-top:1px dashed #E5E7EB;
+    }
+
+    .back-btn{
+      width:100%;
+      padding:12px;
+      font-size:15px;
+      font-weight:700;
+      border-radius:10px;
+      border:2px solid #E53935;
+      background:#FFF5F5;
+      color:#E53935;
+      cursor:pointer;
+    }
+
+    .back-btn:active{ transform:scale(.97) }
+
     .split{ display:grid; grid-template-columns:1fr 1fr; gap:10px }
-    .small{ padding:10px; font-size:14px }
 
-    .footer-credit{ position:absolute; bottom:12px; left:16px; font-size:11px; color:#6B7280; opacity:.85 }
+    .footer-credit{
+      position:absolute;
+      bottom:12px;
+      left:16px;
+      font-size:11px;
+      color:#6B7280;
+      opacity:.8;
+    }
 
-    /* hide pages */
+    /* VIEW CONTROL */
     .view{ display:none }
     .view.active{ display:block }
 
-    /* back link */
-    .back{ background:transparent; border:0; color:#6B7280; font-weight:600; cursor:pointer }
-
-    .note{ font-size:13px; color:#6B7280; margin-top:8px }
-
-    @media (min-width:720px){ .card{ padding:32px } }
+    .note{ font-size:13px; color:#6B7280; margin-top:10px }
   </style>
 </head>
 <body>
@@ -47,13 +100,12 @@
 <div class="page">
   <div class="card">
 
-    <!-- LOGO -->
     <img class="logo" src="https://raw.githubusercontent.com/caturadi-bot/Granito_logo/main/logo%20granito.jpeg" alt="Granito Logo">
 
-    <!-- SELECTOR VIEW -->
+    <!-- SELECTOR -->
     <div id="view-selector" class="view active">
       <h2>Pilih Line</h2>
-      <p>Pilih line untuk masuk ke landing page Abnormality Management.</p>
+      <p>Pilih area untuk Abnormality Management</p>
 
       <div class="split">
         <button class="btn primary" id="to-body">🧰 Body Preparation</button>
@@ -62,10 +114,10 @@
 
       <button class="btn accent" id="to-polish">🔧 Polish & Sortir</button>
 
-      <p class="note">Tip: langsung ke link dengan <code>?area=body</code>, <code>?area=press</code>, atau <code>?area=polish</code>.</p>
+      <p class="note">Akses langsung: <code>?area=body</code>, <code>?area=press</code>, <code>?area=polish</code></p>
     </div>
 
-    <!-- BODY PREPARATION VIEW -->
+    <!-- BODY -->
     <div id="view-body" class="view">
       <h2>Abnormality Management</h2>
       <p>Body Preparation</p>
@@ -74,12 +126,14 @@
       <button class="btn muted" id="body-close">✅ Closing Abnormality</button>
       <button class="btn gray" id="body-dashboard">📊 Dashboard</button>
 
-      <div style="height:8px"></div>
-      <button class="back small" id="back-from-body">← Kembali ke pilihan</button>
+      <div class="back-wrap">
+        <button class="back-btn" id="back-body">⬅ Kembali ke Pilihan Line</button>
+      </div>
+
       <div class="footer-credit">Created by Operation Excellence</div>
     </div>
 
-    <!-- PRESS KILN VIEW -->
+    <!-- PRESS -->
     <div id="view-press" class="view">
       <h2>Abnormality Management</h2>
       <p>Press Kiln</p>
@@ -88,12 +142,14 @@
       <button class="btn muted" id="press-close">✅ Closing Abnormality</button>
       <button class="btn gray" id="press-dashboard">📊 Dashboard</button>
 
-      <div style="height:8px"></div>
-      <button class="back small" id="back-from-press">← Kembali ke pilihan</button>
+      <div class="back-wrap">
+        <button class="back-btn" id="back-press">⬅ Kembali ke Pilihan Line</button>
+      </div>
+
       <div class="footer-credit">Created by Operation Excellence</div>
     </div>
 
-    <!-- POLISH & SORTIR VIEW -->
+    <!-- POLISH -->
     <div id="view-polish" class="view">
       <h2>Abnormality Management</h2>
       <p>Polish & Sortir</p>
@@ -102,8 +158,10 @@
       <button class="btn muted" id="polish-close">✅ Closing Abnormality</button>
       <button class="btn gray" id="polish-dashboard">📊 Dashboard</button>
 
-      <div style="height:8px"></div>
-      <button class="back small" id="back-from-polish">← Kembali ke pilihan</button>
+      <div class="back-wrap">
+        <button class="back-btn" id="back-polish">⬅ Kembali ke Pilihan Line</button>
+      </div>
+
       <div class="footer-credit">Created by Operation Excellence</div>
     </div>
 
@@ -111,9 +169,7 @@
 </div>
 
 <script>
-  /* ======== CONFIG: gform / links ========
-     Ganti value di bawah sesuai link Google Form / Dashboard Anda.
-  */
+  /* CONFIG LINK */
   const CONFIG = {
     body: {
       create: 'https://docs.google.com/forms/d/e/1FAIpQLSdbb3e2qqIo_kJ9_wQWpA4jOnnskY5HMxbe2jzeAGeqWnbm_g/viewform?usp=dialog',
@@ -121,18 +177,17 @@
       dashboard: 'https://drive.google.com/file/d/1TOBJIel2jwC8xzepHlXfH4HICm7-GH7H/view?usp=sharing'
     },
     press: {
-      create: 'https://docs.google.com/forms/d/REPLACE_PRESS_CREATE/viewform',
-      close:  'https://docs.google.com/forms/d/REPLACE_PRESS_CLOSE/viewform',
-      dashboard: 'https://drive.google.com/file/d/REPLACE_PRESS_DASHBOARD/view'
+      create: 'REPLACE_PRESS_CREATE',
+      close:  'REPLACE_PRESS_CLOSE',
+      dashboard: 'REPLACE_PRESS_DASHBOARD'
     },
     polish: {
-      create: 'https://docs.google.com/forms/d/REPLACE_POLISH_CREATE/viewform',
-      close:  'https://docs.google.com/forms/d/REPLACE_POLISH_CLOSE/viewform',
-      dashboard: 'https://drive.google.com/file/d/REPLACE_POLISH_DASHBOARD/view'
+      create: 'REPLACE_POLISH_CREATE',
+      close:  'REPLACE_POLISH_CLOSE',
+      dashboard: 'REPLACE_POLISH_DASHBOARD'
     }
   };
 
-  /* ======== small router / view control ======== */
   const views = {
     selector: document.getElementById('view-selector'),
     body: document.getElementById('view-body'),
@@ -140,48 +195,38 @@
     polish: document.getElementById('view-polish')
   };
 
-  function showView(name, pushState = true){
-    Object.values(views).forEach(v => v.classList.remove('active'));
+  function showView(name, push=true){
+    Object.values(views).forEach(v=>v.classList.remove('active'));
     views[name].classList.add('active');
-    if(pushState) history.replaceState(null, '', '?' + new URLSearchParams({ area: name }).toString());
+    if(push) history.replaceState(null,'','?area='+name);
   }
 
-  // init button wiring
-  document.getElementById('to-body').addEventListener('click', ()=> showView('body'));
-  document.getElementById('to-press').addEventListener('click', ()=> showView('press'));
-  document.getElementById('to-polish').addEventListener('click', ()=> showView('polish'));
+  // selector
+  document.getElementById('to-body').onclick = ()=>showView('body');
+  document.getElementById('to-press').onclick = ()=>showView('press');
+  document.getElementById('to-polish').onclick = ()=>showView('polish');
 
   // back buttons
-  document.getElementById('back-from-body').addEventListener('click', ()=> showView('selector'));
-  document.getElementById('back-from-press').addEventListener('click', ()=> showView('selector'));
-  document.getElementById('back-from-polish').addEventListener('click', ()=> showView('selector'));
+  document.getElementById('back-body').onclick = ()=>showView('selector');
+  document.getElementById('back-press').onclick = ()=>showView('selector');
+  document.getElementById('back-polish').onclick = ()=>showView('selector');
 
-  // body buttons
-  document.getElementById('body-create').addEventListener('click', ()=> window.open(CONFIG.body.create, '_blank'));
-  document.getElementById('body-close').addEventListener('click', ()=> window.open(CONFIG.body.close, '_blank'));
-  document.getElementById('body-dashboard').addEventListener('click', ()=> window.open(CONFIG.body.dashboard, '_blank'));
+  // actions
+  document.getElementById('body-create').onclick = ()=>window.open(CONFIG.body.create,'_blank');
+  document.getElementById('body-close').onclick = ()=>window.open(CONFIG.body.close,'_blank');
+  document.getElementById('body-dashboard').onclick = ()=>window.open(CONFIG.body.dashboard,'_blank');
 
-  // press buttons
-  document.getElementById('press-create').addEventListener('click', ()=> window.open(CONFIG.press.create, '_blank'));
-  document.getElementById('press-close').addEventListener('click', ()=> window.open(CONFIG.press.close, '_blank'));
-  document.getElementById('press-dashboard').addEventListener('click', ()=> window.open(CONFIG.press.dashboard, '_blank'));
+  document.getElementById('press-create').onclick = ()=>window.open(CONFIG.press.create,'_blank');
+  document.getElementById('press-close').onclick = ()=>window.open(CONFIG.press.close,'_blank');
+  document.getElementById('press-dashboard').onclick = ()=>window.open(CONFIG.press.dashboard,'_blank');
 
-  // polish buttons
-  document.getElementById('polish-create').addEventListener('click', ()=> window.open(CONFIG.polish.create, '_blank'));
-  document.getElementById('polish-close').addEventListener('click', ()=> window.open(CONFIG.polish.close, '_blank'));
-  document.getElementById('polish-dashboard').addEventListener('click', ()=> window.open(CONFIG.polish.dashboard, '_blank'));
+  document.getElementById('polish-create').onclick = ()=>window.open(CONFIG.polish.create,'_blank');
+  document.getElementById('polish-close').onclick = ()=>window.open(CONFIG.polish.close,'_blank');
+  document.getElementById('polish-dashboard').onclick = ()=>window.open(CONFIG.polish.dashboard,'_blank');
 
-  // on load: check query param area for direct link
-  (function(){
-    try{
-      const params = new URLSearchParams(location.search);
-      const area = (params.get('area') || '').toLowerCase();
-      if(area === 'body' || area === 'press' || area === 'polish'){
-        showView(area, false);
-      }
-    }catch(e){ /* ignore */ }
-  })();
-
+  // direct link
+  const q = new URLSearchParams(location.search).get('area');
+  if(q && views[q]) showView(q,false);
 </script>
 </body>
 </html>
