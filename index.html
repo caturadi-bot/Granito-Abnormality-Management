@@ -9,7 +9,6 @@
     *{ box-sizing:border-box }
     html,body{ margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; background:#f3e8ff }
 
-    /* WRAPPER */
     .page{
       min-height:100svh;
       display:flex;
@@ -53,10 +52,10 @@
 
     .primary{ background:#1F2933 }
     .muted{ background:#6B7280 }
-    .accent{ background:#E53935 }
+    .accent{ background:#E53935 } /* merah dashboard */
     .gray{ background:#9CA3AF }
 
-    /* BACK BUTTON — DITONJOLKAN */
+    /* BACK BUTTON */
     .back-wrap{
       margin-top:16px;
       padding-top:12px;
@@ -77,8 +76,6 @@
 
     .back-btn:active{ transform:scale(.97) }
 
-    .split{ display:grid; grid-template-columns:1fr 1fr; gap:10px }
-
     .footer-credit{
       position:absolute;
       bottom:12px;
@@ -88,7 +85,7 @@
       opacity:.8;
     }
 
-    /* VIEW CONTROL */
+    /* VIEW */
     .view{ display:none }
     .view.active{ display:block }
 
@@ -102,19 +99,16 @@
 
     <img class="logo" src="https://raw.githubusercontent.com/caturadi-bot/Granito_logo/main/logo%20granito.jpeg" alt="Granito Logo">
 
-    <!-- SELECTOR -->
+    <!-- SELECTOR (VERTIKAL) -->
     <div id="view-selector" class="view active">
-      <h2>Pilih Line</h2>
-      <p>Pilih area untuk Abnormality Management</p>
+      <h2>Pilih Departemen</h2>
+      <p>Pilih area Abnormality Management</p>
 
-      <div class="split">
-        <button class="btn primary" id="to-body">🟣 Body Preparation</button>
-        <button class="btn muted" id="to-press">🔵 Press Kiln</button>
-      </div>
+      <button class="btn primary" id="to-body">🔵 Body Preparation</button>
+      <button class="btn muted" id="to-press">🟠 Press Kiln</button>
+      <button class="btn accent" id="to-polish">🔴 Polish & Sortir</button>
 
-      <button class="btn accent" id="to-polish">🔵 Polish & Sortir</button>
-
-      <p class="note"><code>Created by Operation Excellence<code></p>
+      <p class="note">Created by Operation Excellence</p>
     </div>
 
     <!-- BODY -->
@@ -124,7 +118,7 @@
 
       <button class="btn primary" id="body-create">➕ Create Abnormality</button>
       <button class="btn muted" id="body-close">✅ Closing Abnormality</button>
-      <button class="btn gray" id="body-dashboard">📊 Dashboard</button>
+      <button class="btn accent" id="body-dashboard">📊 Dashboard</button>
 
       <div class="back-wrap">
         <button class="back-btn" id="back-body">⬅ Kembali ke Pilihan Line</button>
@@ -140,7 +134,7 @@
 
       <button class="btn primary" id="press-create">➕ Create Abnormality</button>
       <button class="btn muted" id="press-close">✅ Closing Abnormality</button>
-      <button class="btn gray" id="press-dashboard">📊 Dashboard</button>
+      <button class="btn accent" id="press-dashboard">📊 Dashboard</button>
 
       <div class="back-wrap">
         <button class="back-btn" id="back-press">⬅ Kembali ke Pilihan Line</button>
@@ -156,7 +150,7 @@
 
       <button class="btn primary" id="polish-create">➕ Create Abnormality</button>
       <button class="btn muted" id="polish-close">✅ Closing Abnormality</button>
-      <button class="btn gray" id="polish-dashboard">📊 Dashboard</button>
+      <button class="btn accent" id="polish-dashboard">📊 Dashboard</button>
 
       <div class="back-wrap">
         <button class="back-btn" id="back-polish">⬅ Kembali ke Pilihan Line</button>
@@ -169,27 +163,26 @@
 </div>
 
 <script>
-  /* CONFIG LINK */
   const CONFIG = {
     body: {
-      create: 'https://docs.google.com/forms/d/e/1FAIpQLSdbb3e2qqIo_kJ9_wQWpA4jOnnskY5HMxbe2jzeAGeqWnbm_g/viewform?usp=dialog',
-      close:  'https://docs.google.com/forms/d/e/1FAIpQLSdkV1RIGyv2qPPuTWmplMM7EKOIhXaerDcwJsYmwLn7MPn6Gg/viewform?usp=dialog',
-      dashboard: 'https://drive.google.com/file/d/1TOBJIel2jwC8xzepHlXfH4HICm7-GH7H/view?usp=sharing'
+      create: 'BODY_CREATE_LINK',
+      close: 'BODY_CLOSE_LINK',
+      dashboard: 'BODY_DASHBOARD_LINK'
     },
     press: {
-      create: 'REPLACE_PRESS_CREATE',
-      close:  'REPLACE_PRESS_CLOSE',
-      dashboard: 'REPLACE_PRESS_DASHBOARD'
+      create: 'PRESS_CREATE_LINK',
+      close: 'PRESS_CLOSE_LINK',
+      dashboard: 'PRESS_DASHBOARD_LINK'
     },
     polish: {
-      create: 'REPLACE_POLISH_CREATE',
-      close:  'REPLACE_POLISH_CLOSE',
-      dashboard: 'REPLACE_POLISH_DASHBOARD'
+      create: 'POLISH_CREATE_LINK',
+      close: 'POLISH_CLOSE_LINK',
+      dashboard: 'POLISH_DASHBOARD_LINK'
     }
   };
 
   const views = {
-    selector: document.getElementById('view-selector'),
+    selector: viewSelector = document.getElementById('view-selector'),
     body: document.getElementById('view-body'),
     press: document.getElementById('view-press'),
     polish: document.getElementById('view-polish')
@@ -201,30 +194,26 @@
     if(push) history.replaceState(null,'','?area='+name);
   }
 
-  // selector
-  document.getElementById('to-body').onclick = ()=>showView('body');
-  document.getElementById('to-press').onclick = ()=>showView('press');
-  document.getElementById('to-polish').onclick = ()=>showView('polish');
+  toBody.onclick   = ()=>showView('body');
+  toPress.onclick  = ()=>showView('press');
+  toPolish.onclick = ()=>showView('polish');
 
-  // back buttons
-  document.getElementById('back-body').onclick = ()=>showView('selector');
-  document.getElementById('back-press').onclick = ()=>showView('selector');
-  document.getElementById('back-polish').onclick = ()=>showView('selector');
+  backBody.onclick   = ()=>showView('selector');
+  backPress.onclick  = ()=>showView('selector');
+  backPolish.onclick = ()=>showView('selector');
 
-  // actions
-  document.getElementById('body-create').onclick = ()=>window.open(CONFIG.body.create,'_blank');
-  document.getElementById('body-close').onclick = ()=>window.open(CONFIG.body.close,'_blank');
-  document.getElementById('body-dashboard').onclick = ()=>window.open(CONFIG.body.dashboard,'_blank');
+  bodyCreate.onclick   = ()=>window.open(CONFIG.body.create,'_blank');
+  bodyClose.onclick    = ()=>window.open(CONFIG.body.close,'_blank');
+  bodyDashboard.onclick= ()=>window.open(CONFIG.body.dashboard,'_blank');
 
-  document.getElementById('press-create').onclick = ()=>window.open(CONFIG.press.create,'_blank');
-  document.getElementById('press-close').onclick = ()=>window.open(CONFIG.press.close,'_blank');
-  document.getElementById('press-dashboard').onclick = ()=>window.open(CONFIG.press.dashboard,'_blank');
+  pressCreate.onclick   = ()=>window.open(CONFIG.press.create,'_blank');
+  pressClose.onclick    = ()=>window.open(CONFIG.press.close,'_blank');
+  pressDashboard.onclick= ()=>window.open(CONFIG.press.dashboard,'_blank');
 
-  document.getElementById('polish-create').onclick = ()=>window.open(CONFIG.polish.create,'_blank');
-  document.getElementById('polish-close').onclick = ()=>window.open(CONFIG.polish.close,'_blank');
-  document.getElementById('polish-dashboard').onclick = ()=>window.open(CONFIG.polish.dashboard,'_blank');
+  polishCreate.onclick   = ()=>window.open(CONFIG.polish.create,'_blank');
+  polishClose.onclick    = ()=>window.open(CONFIG.polish.close,'_blank');
+  polishDashboard.onclick= ()=>window.open(CONFIG.polish.dashboard,'_blank');
 
-  // direct link
   const q = new URLSearchParams(location.search).get('area');
   if(q && views[q]) showView(q,false);
 </script>
