@@ -1,280 +1,288 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GRANITO — Abnormality Management</title>
-  <meta name="description" content="Selector multi-landing untuk Body / Press / Polish. Siap untuk GitHub Pages.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GRANITO — Abnormality Management</title>
 
-  <style>
-    *{ box-sizing:border-box }
-    html,body{
-      margin:0; padding:0; font-family:Inter, Arial, Helvetica, sans-serif;
-      background:#f3e8ff; color:#111;
-    }
+<style>
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#EEF0F7;
+  color:#111;
+}
 
-    /* Safe wrapper untuk WebView & iOS notch */
-    .page{
-      min-height:100svh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:
-        calc(env(safe-area-inset-top) + 16px)
-        16px
-        calc(env(safe-area-inset-bottom) + 16px);
-    }
+/* PAGE */
+.page{
+  min-height:100svh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:calc(env(safe-area-inset-top) + 16px) 16px calc(env(safe-area-inset-bottom) + 16px);
+}
 
-    .card{
-      width:100%; max-width:420px;
-      background:#fff; padding:24px; border-radius:16px;
-      text-align:center; box-shadow:0 12px 28px rgba(0,0,0,.12);
-      position:relative;
-    }
+/* CARD */
+.card{
+  width:100%;
+  max-width:420px;
+  background:#F6F7FC;
+  border-radius:28px;
+  padding:28px 20px 32px;
+  box-shadow:0 20px 40px rgba(0,0,0,.12);
+  text-align:center;
+}
 
-    .logo{ width:160px; margin-bottom:14px; object-fit:contain; }
-    h2{ margin:8px 0 4px; font-size:20px; }
-    p{ margin:0 0 18px; color:#555; }
+/* HEADER */
+.logo{
+  width:150px;
+  margin-bottom:12px;
+}
+h1{
+  font-size:20px;
+  margin:6px 0 2px;
+}
+.subtitle{
+  font-size:15px;
+  color:#666;
+  margin-bottom:22px;
+}
 
-    /* Buttons */
-    .btn{
-      display:block;
-      width:100%;
-      padding:14px;
-      margin-bottom:12px;
-      font-size:16px;
-      font-weight:700;
-      border:none;
-      border-radius:10px;
-      color:#fff;
-      cursor:pointer;
-      transition:transform .12s ease, opacity .12s ease, box-shadow .12s ease;
-      text-align:left;
-    }
-    .btn:active{ transform:scale(.98); opacity:.95 }
-    .btn:focus{ outline:0; box-shadow:0 0 0 4px rgba(99,102,241,.12) }
+/* AREA LIST */
+.area-list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
 
-    .primary{ background:#1F2933 }      /* dark */
-    .muted{ background:#6B7280 }        /* grey */
-    .accent{ background:#E53935 }       /* red (dashboard) */
-    .tertiary{ background:#9CA3AF }     /* light gray for secondary */
+/* AREA ITEM */
+.area-item{
+  background:#fff;
+  border-radius:16px;
+  padding:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.area-item:active{
+  transform:scale(.98);
+}
 
-    /* selector vertical list spacing */
-    .selector-list{ display:flex; flex-direction:column; gap:10px; margin-top:6px; }
+/* LEFT */
+.area-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.icon{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  color:#fff;
+}
+.blue{background:#3B82F6}
+.orange{background:#F59E0B}
+.red{background:#EF4444}
 
-    /* back (highlighted) */
-    .back-wrap{
-      margin-top:16px; padding-top:12px; border-top:1px dashed #E5E7EB;
-    }
-    .back-btn{
-      width:100%; padding:12px; font-size:15px; font-weight:800; border-radius:10px;
-      border:2px solid #E53935; background:#FFF5F5; color:#E53935; cursor:pointer;
-      transition:transform .12s ease;
-    }
-    .back-btn:active{ transform:scale(.98) }
+/* TEXT */
+.area-text{
+  text-align:left;
+}
+.area-title{
+  font-weight:700;
+  font-size:15px;
+}
+.area-desc{
+  font-size:13px;
+  color:#777;
+}
 
-    .footer-credit{ position:absolute; bottom:12px; left:16px; font-size:11px; color:#6B7280; opacity:.85 }
+/* CHEVRON */
+.chevron{
+  font-size:20px;
+  color:#9CA3AF;
+}
 
-    /* view control */
-    .view{ display:none }
-    .view.active{ display:block }
+/* FOOTER */
+.footer{
+  margin-top:22px;
+  font-size:12px;
+  color:#888;
+}
 
-    /* small hint */
-    .note{ font-size:13px; color:#6B7280; margin-top:10px }
-    code{ background:#F3F4F6; padding:2px 6px; border-radius:6px; font-size:13px }
-    @media (min-width:720px){ .card{ padding:32px } }
-  </style>
+/* ===== SUB PAGE ===== */
+.view{display:none}
+.view.active{display:block}
+
+.action-btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:12px;
+  cursor:pointer;
+}
+.primary{background:#1F2933}
+.muted{background:#6B7280}
+.danger{background:#E53935}
+
+.back-wrap{
+  margin-top:16px;
+  border-top:1px dashed #E5E7EB;
+  padding-top:14px;
+}
+.back-btn{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:2px solid #E53935;
+  background:#FFF5F5;
+  color:#E53935;
+  font-weight:800;
+  cursor:pointer;
+}
+</style>
 </head>
+
 <body>
-  <div class="page">
-    <div class="card">
-      <img class="logo"
-           src="https://raw.githubusercontent.com/caturadi-bot/Granito_logo/main/logo%20granito.jpeg"
-           alt="Granito Logo" />
+<div class="page">
+<div class="card">
 
-      <!-- SELECTOR -->
-      <div id="view-selector" class="view active" aria-hidden="false">
-        <h2>Pilih Line</h2>
-        <p>Pilih area Abnormality Management</p>
+<img class="logo" src="https://raw.githubusercontent.com/caturadi-bot/Granito_logo/main/logo%20granito.jpeg">
 
-        <div class="selector-list" role="list">
-          <button id="to-body" class="btn primary" type="button" role="listitem">🔵 Body Preparation</button>
-          <button id="to-press" class="btn muted" type="button" role="listitem">🟠 Press Kiln</button>
-          <button id="to-polish" class="btn accent" type="button" role="listitem">🔴 Polish & Sortir</button>
+<!-- ================= SELECTOR ================= -->
+<div id="selector" class="view active">
+  <h1>Abnormality Management</h1>
+  <div class="subtitle">Pilih Area Produksi</div>
+
+  <div class="area-list">
+
+    <div class="area-item" onclick="showView('body')">
+      <div class="area-left">
+        <div class="icon blue">⚙️</div>
+        <div class="area-text">
+          <div class="area-title">Body Preparation</div>
+          <div class="area-desc">Kontrol material & proses</div>
         </div>
-
-        <p class="note">Created by Operation Excellence</p>
       </div>
-
-      <!-- BODY -->
-      <div id="view-body" class="view" aria-hidden="true">
-        <h2>Abnormality Management</h2>
-        <p>Body Preparation</p>
-
-        <button id="body-create" class="btn primary" type="button">➕ Create Abnormality</button>
-        <button id="body-close" class="btn muted" type="button">✅ Closing Abnormality</button>
-        <button id="body-dashboard" class="btn accent" type="button">📊 Dashboard</button>
-
-        <div class="back-wrap">
-          <button id="back-body" class="back-btn" type="button">⬅ Kembali ke Pilihan Line</button>
-        </div>
-
-        <div class="footer-credit">Created by Operation Excellence</div>
-      </div>
-
-      <!-- PRESS -->
-      <div id="view-press" class="view" aria-hidden="true">
-        <h2>Abnormality Management</h2>
-        <p>Press Kiln</p>
-
-        <button id="press-create" class="btn primary" type="button">➕ Create Abnormality</button>
-        <button id="press-close" class="btn muted" type="button">✅ Closing Abnormality</button>
-        <button id="press-dashboard" class="btn accent" type="button">📊 Dashboard</button>
-
-        <div class="back-wrap">
-          <button id="back-press" class="back-btn" type="button">⬅ Kembali ke Pilihan Line</button>
-        </div>
-
-        <div class="footer-credit">Created by Operation Excellence</div>
-      </div>
-
-      <!-- POLISH -->
-      <div id="view-polish" class="view" aria-hidden="true">
-        <h2>Abnormality Management</h2>
-        <p>Polish & Sortir</p>
-
-        <button id="polish-create" class="btn primary" type="button">➕ Create Abnormality</button>
-        <button id="polish-close" class="btn muted" type="button">✅ Closing Abnormality</button>
-        <button id="polish-dashboard" class="btn accent" type="button">📊 Dashboard</button>
-
-        <div class="back-wrap">
-          <button id="back-polish" class="back-btn" type="button">⬅ Kembali ke Pilihan Line</button>
-        </div>
-
-        <div class="footer-credit">Created by Operation Excellence</div>
-      </div>
-
+      <div class="chevron">›</div>
     </div>
+
+    <div class="area-item" onclick="showView('press')">
+      <div class="area-left">
+        <div class="icon orange">🏭</div>
+        <div class="area-text">
+          <div class="area-title">Press Kiln</div>
+          <div class="area-desc">Pencetakan & pembakaran</div>
+        </div>
+      </div>
+      <div class="chevron">›</div>
+    </div>
+
+    <div class="area-item" onclick="showView('polish')">
+      <div class="area-left">
+        <div class="icon red">🧱</div>
+        <div class="area-text">
+          <div class="area-title">Polish & Sortir</div>
+          <div class="area-desc">Finishing & grading</div>
+        </div>
+      </div>
+      <div class="chevron">›</div>
+    </div>
+
   </div>
 
-  <script>
-    /**
-     * Multi-landing selector script (robust)
-     * - pastikan mengganti link di CONFIG
-     * - tidak mengandalkan global vars; semua elemen di-cache dengan getElementById
-     */
+  <div class="footer">Created by Operation Excellence</div>
+</div>
 
-    (function(){
-      // CONFIG: ganti placeholder dengan link yang sebenarnya
-      const CONFIG = {
-        body: {
-          create: 'https://docs.google.com/forms/d/e/1FAIpQLSdbb3e2qqIo_kJ9_wQWpA4jOnnskY5HMxbe2jzeAGeqWnbm_g/viewform?usp=dialog',
-          close:  'https://docs.google.com/forms/d/e/1FAIpQLSdkV1RIGyv2qPPuTWmplMM7EKOIhXaerDcwJsYmwLn7MPn6Gg/viewform?usp=dialog',
-          dashboard: 'BODY_DASHBOARD_LINK'
-        },
-        press: {
-          create: 'PRESS_CREATE_LINK',
-          close:  'PRESS_CLOSE_LINK',
-          dashboard: 'PRESS_DASHBOARD_LINK'
-        },
-        polish: {
-          create: 'https://docs.google.com/forms/d/e/1FAIpQLSdbm9pd9_rCP_u4E84QBQSaagYwFH4OspjQj-8vGZed7ui1uA/viewform?usp=dialog',
-          close:  'https://docs.google.com/forms/d/e/1FAIpQLSfVmpO0zBp7o8Gc-3csB1j_owkhY-4x7iuQOOBlRHxvMLAGDw/viewform?usp=dialog',
-          dashboard: 'POLISH_DASHBOARD_LINK'
-        }
-      };
+<!-- ================= BODY ================= -->
+<div id="body" class="view">
+  <h1>Abnormality Management</h1>
+  <div class="subtitle">Body Preparation</div>
 
-      // cache views
-      const viewSelector = document.getElementById('view-selector');
-      const viewBody = document.getElementById('view-body');
-      const viewPress = document.getElementById('view-press');
-      const viewPolish = document.getElementById('view-polish');
+  <button class="action-btn primary" onclick="openLink(CONFIG.body.create)">➕ Create Abnormality</button>
+  <button class="action-btn muted" onclick="openLink(CONFIG.body.close)">✅ Closing Abnormality</button>
+  <button class="action-btn danger" onclick="openLink(CONFIG.body.dashboard)">📊 Dashboard</button>
 
-      const views = {
-        selector: viewSelector,
-        body: viewBody,
-        press: viewPress,
-        polish: viewPolish
-      };
+  <div class="back-wrap">
+    <button class="back-btn" onclick="showView('selector')">⬅ Kembali ke Pilihan Area</button>
+  </div>
+</div>
 
-      // helper show/hide
-      function showView(name, pushState = true){
-        Object.keys(views).forEach(k => {
-          const el = views[k];
-          if(!el) return;
-          if(k === name){
-            el.classList.add('active');
-            el.setAttribute('aria-hidden', 'false');
-          } else {
-            el.classList.remove('active');
-            el.setAttribute('aria-hidden', 'true');
-          }
-        });
-        if(pushState){
-          try{
-            history.replaceState(null, '', '?' + new URLSearchParams({ area: name }).toString());
-          }catch(e){ /* ignore for older browsers */ }
-        }
-      }
+<!-- ================= PRESS ================= -->
+<div id="press" class="view">
+  <h1>Abnormality Management</h1>
+  <div class="subtitle">Press Kiln</div>
 
-      // cache buttons (selector)
-      const toBody   = document.getElementById('to-body');
-      const toPress  = document.getElementById('to-press');
-      const toPolish = document.getElementById('to-polish');
+  <button class="action-btn primary" onclick="openLink(CONFIG.press.create)">➕ Create Abnormality</button>
+  <button class="action-btn muted" onclick="openLink(CONFIG.press.close)">✅ Closing Abnormality</button>
+  <button class="action-btn danger" onclick="openLink(CONFIG.press.dashboard)">📊 Dashboard</button>
 
-      // cache back buttons
-      const backBody   = document.getElementById('back-body');
-      const backPress  = document.getElementById('back-press');
-      const backPolish = document.getElementById('back-polish');
+  <div class="back-wrap">
+    <button class="back-btn" onclick="showView('selector')">⬅ Kembali ke Pilihan Area</button>
+  </div>
+</div>
 
-      // cache action buttons (body)
-      const bodyCreate    = document.getElementById('body-create');
-      const bodyClose     = document.getElementById('body-close');
-      const bodyDashboard = document.getElementById('body-dashboard');
+<!-- ================= POLISH ================= -->
+<div id="polish" class="view">
+  <h1>Abnormality Management</h1>
+  <div class="subtitle">Polish & Sortir</div>
 
-      // press actions
-      const pressCreate    = document.getElementById('press-create');
-      const pressClose     = document.getElementById('press-close');
-      const pressDashboard = document.getElementById('press-dashboard');
+  <button class="action-btn primary" onclick="openLink(CONFIG.polish.create)">➕ Create Abnormality</button>
+  <button class="action-btn muted" onclick="openLink(CONFIG.polish.close)">✅ Closing Abnormality</button>
+  <button class="action-btn danger" onclick="openLink(CONFIG.polish.dashboard)">📊 Dashboard</button>
 
-      // polish actions
-      const polishCreate    = document.getElementById('polish-create');
-      const polishClose     = document.getElementById('polish-close');
-      const polishDashboard = document.getElementById('polish-dashboard');
+  <div class="back-wrap">
+    <button class="back-btn" onclick="showView('selector')">⬅ Kembali ke Pilihan Area</button>
+  </div>
+</div>
 
-      // attach listeners safely
-      if(toBody)   toBody.addEventListener('click', ()=> showView('body'));
-      if(toPress)  toPress.addEventListener('click', ()=> showView('press'));
-      if(toPolish) toPolish.addEventListener('click', ()=> showView('polish'));
+</div>
+</div>
 
-      if(backBody)   backBody.addEventListener('click', ()=> showView('selector'));
-      if(backPress)  backPress.addEventListener('click', ()=> showView('selector'));
-      if(backPolish) backPolish.addEventListener('click', ()=> showView('selector'));
+<script>
+const CONFIG={
+  body:{
+    create:'BODY_CREATE_LINK',
+    close:'BODY_CLOSE_LINK',
+    dashboard:'BODY_DASHBOARD_LINK'
+  },
+  press:{
+    create:'PRESS_CREATE_LINK',
+    close:'PRESS_CLOSE_LINK',
+    dashboard:'PRESS_DASHBOARD_LINK'
+  },
+  polish:{
+    create:'POLISH_CREATE_LINK',
+    close:'POLISH_CLOSE_LINK',
+    dashboard:'POLISH_DASHBOARD_LINK'
+  }
+};
 
-      if(bodyCreate)    bodyCreate.addEventListener('click', ()=> window.open(CONFIG.body.create, '_blank'));
-      if(bodyClose)     bodyClose.addEventListener('click', ()=> window.open(CONFIG.body.close, '_blank'));
-      if(bodyDashboard) bodyDashboard.addEventListener('click', ()=> window.open(CONFIG.body.dashboard, '_blank'));
+function showView(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  history.replaceState(null,'','?area='+id);
+}
+function openLink(url){
+  window.open(url,'_blank');
+}
 
-      if(pressCreate)    pressCreate.addEventListener('click', ()=> window.open(CONFIG.press.create, '_blank'));
-      if(pressClose)     pressClose.addEventListener('click', ()=> window.open(CONFIG.press.close, '_blank'));
-      if(pressDashboard) pressDashboard.addEventListener('click', ()=> window.open(CONFIG.press.dashboard, '_blank'));
+/* direct link */
+const q=new URLSearchParams(location.search).get('area');
+if(q && document.getElementById(q)) showView(q);
+</script>
 
-      if(polishCreate)    polishCreate.addEventListener('click', ()=> window.open(CONFIG.polish.create, '_blank'));
-      if(polishClose)     polishClose.addEventListener('click', ()=> window.open(CONFIG.polish.close, '_blank'));
-      if(polishDashboard) polishDashboard.addEventListener('click', ()=> window.open(CONFIG.polish.dashboard, '_blank'));
-
-      // direct-link via ?area=body|press|polish
-      try{
-        const params = new URLSearchParams(location.search);
-        const area = (params.get('area') || '').toLowerCase();
-        if(area && views[area]) showView(area, false);
-      }catch(e){
-        // ignore URL issues
-      }
-
-      // (optional) friendly no-JS fallback: ensure selector visible if nothing activated
-      // show selector by default (already set in HTML)
-    })();
-  </script>
 </body>
 </html>
