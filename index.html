@@ -121,6 +121,7 @@ h1{
   margin-bottom:12px;
   cursor:pointer;
 }
+
 .primary{background:#1F2933}
 .muted{background:#6B7280}
 .danger{background:#E53935}
@@ -130,6 +131,7 @@ h1{
   border-top:1px dashed #E5E7EB;
   padding-top:14px;
 }
+
 .back-btn{
   width:100%;
   padding:12px;
@@ -147,7 +149,7 @@ h1{
 <div class="page">
   <div class="card">
 
-    <!-- optional main logo -->
+    <!-- LOGO -->
     <img class="logo" src="https://raw.githubusercontent.com/caturadi-bot/Granito_logo/main/logo%20granito.jpeg" alt="Granito Logo">
 
     <!-- SELECTOR -->
@@ -156,12 +158,11 @@ h1{
       <div class="subtitle">Pilih Area Produksi</div>
 
       <div class="area-list">
-        <!-- BODY (SILO IMAGE) -->
+
         <div class="area-item" onclick="showView('body')">
           <div class="area-left">
             <div class="icon">
-              <!-- REPLACE with actual data URL or GitHub raw URL -->
-              <img src="https://raw.githubusercontent.com/caturadi-bot/Body-icon/main/a9abfffa-497a-41c1-afe4-f98b53c7e616.png" alt="Body icon">
+              <img src="https://raw.githubusercontent.com/caturadi-bot/Body-icon/main/a9abfffa-497a-41c1-afe4-f98b53c7e616.png">
             </div>
             <div class="area-text">
               <div class="area-title">Body Preparation</div>
@@ -170,11 +171,10 @@ h1{
           <div class="chevron">›</div>
         </div>
 
-        <!-- PRESS (MACHINE IMAGE) -->
         <div class="area-item" onclick="showView('press')">
           <div class="area-left">
             <div class="icon">
-              <img src="https://raw.githubusercontent.com/caturadi-bot/Body-icon/main/e6878303-4c5c-4923-a892-ffa42fa988c1.png" alt="Press icon">
+              <img src="https://raw.githubusercontent.com/caturadi-bot/Body-icon/main/e6878303-4c5c-4923-a892-ffa42fa988c1.png">
             </div>
             <div class="area-text">
               <div class="area-title">Press Kiln</div>
@@ -183,11 +183,10 @@ h1{
           <div class="chevron">›</div>
         </div>
 
-        <!-- POLISH (POLISHED TILE IMAGE) -->
         <div class="area-item" onclick="showView('polish')">
           <div class="area-left">
             <div class="icon">
-              <img src="https://raw.githubusercontent.com/caturadi-bot/Body-icon/main/ddff6995-363e-4aa2-9198-5a808695a489.png" alt="Polish icon">
+              <img src="https://raw.githubusercontent.com/caturadi-bot/Body-icon/main/ddff6995-363e-4aa2-9198-5a808695a489.png">
             </div>
             <div class="area-text">
               <div class="area-title">Polish & Sortir</div>
@@ -195,10 +194,12 @@ h1{
           </div>
           <div class="chevron">›</div>
         </div>
+
       </div>
 
       <div class="footer">Created by Operation Excellence</div>
     </div>
+
 
     <!-- BODY PAGE -->
     <div id="body" class="view">
@@ -208,11 +209,13 @@ h1{
       <button class="action-btn primary" onclick="openLink(CONFIG.body.create)">➕ Create Abnormality</button>
       <button class="action-btn muted" onclick="openLink(CONFIG.body.close)">✅ Closing Abnormality</button>
       <button class="action-btn danger" onclick="openLink(CONFIG.body.dashboard)">📊 Dashboard</button>
+      <button class="action-btn muted" onclick="openLink(CONFIG.body.sheet)">📑 Spreadsheet</button>
 
       <div class="back-wrap">
         <button class="back-btn" onclick="showView('selector')">⬅ Kembali ke Pilihan Area</button>
       </div>
     </div>
+
 
     <!-- PRESS PAGE -->
     <div id="press" class="view">
@@ -222,11 +225,13 @@ h1{
       <button class="action-btn primary" onclick="openLink(CONFIG.press.create)">➕ Create Abnormality</button>
       <button class="action-btn muted" onclick="openLink(CONFIG.press.close)">✅ Closing Abnormality</button>
       <button class="action-btn danger" onclick="openLink(CONFIG.press.dashboard)">📊 Dashboard</button>
+      <button class="action-btn muted" onclick="openLink(CONFIG.press.sheet)">📑 Spreadsheet</button>
 
       <div class="back-wrap">
         <button class="back-btn" onclick="showView('selector')">⬅ Kembali ke Pilihan Area</button>
       </div>
     </div>
+
 
     <!-- POLISH PAGE -->
     <div id="polish" class="view">
@@ -236,6 +241,7 @@ h1{
       <button class="action-btn primary" onclick="openLink(CONFIG.polish.create)">➕ Create Abnormality</button>
       <button class="action-btn muted" onclick="openLink(CONFIG.polish.close)">✅ Closing Abnormality</button>
       <button class="action-btn danger" onclick="openLink(CONFIG.polish.dashboard)">📊 Dashboard</button>
+      <button class="action-btn muted" onclick="openLink(CONFIG.polish.sheet)">📑 Spreadsheet</button>
 
       <div class="back-wrap">
         <button class="back-btn" onclick="showView('selector')">⬅ Kembali ke Pilihan Area</button>
@@ -245,42 +251,48 @@ h1{
   </div>
 </div>
 
+
 <script>
-/* =========== CONFIG =========== 
- Replace placeholders below with your links or keep as is and update later.
- If you embedded images as data URLs, replace SILO_DATA_URL_HERE etc. above with the data URLs.
-*/
+
 const CONFIG = {
-  body: {
-    create: 'https://docs.google.com/forms/d/e/1FAIpQLSdbb3e2qqIo_kJ9_wQWpA4jOnnskY5HMxbe2jzeAGeqWnbm_g/viewform?usp=dialog',
-    close:  'https://docs.google.com/forms/d/e/1FAIpQLSdkV1RIGyv2qPPuTWmplMM7EKOIhXaerDcwJsYmwLn7MPn6Gg/viewform?usp=dialog',
-    dashboard: 'https://lookerstudio.google.com/reporting/e7ae89ce-a1bd-44a4-b8f7-9f114f794870'
+
+  body:{
+    create:'https://docs.google.com/forms/d/e/1FAIpQLSdbb3e2qqIo_kJ9_wQWpA4jOnnskY5HMxbe2jzeAGeqWnbm_g/viewform?usp=dialog',
+    close:'https://docs.google.com/forms/d/e/1FAIpQLSdkV1RIGyv2qPPuTWmplMM7EKOIhXaerDcwJsYmwLn7MPn6Gg/viewform?usp=dialog',
+    dashboard:'https://lookerstudio.google.com/reporting/e7ae89ce-a1bd-44a4-b8f7-9f114f794870',
+    sheet:'https://docs.google.com/spreadsheets/d/1XzaZEgDGeXn9n_4-XgbbLpjUaX_3_Pe5gW-Lz4KEYjQ/edit?usp=sharing'
   },
-  press: {
-    create: 'https://docs.google.com/forms/d/e/1FAIpQLSfpDjZwDGx6txxcr5msHKSO7gw2e74PQAUTvN9QpB5aFs_9_w/viewform?usp=dialog',
-    close:  'https://docs.google.com/forms/d/e/1FAIpQLSdEJ-d-eyigKURRbiU1yYaocZPbm4o8VqAZPk3vQMj2S6RTPQ/viewform?usp=header',
-    dashboard: 'https://lookerstudio.google.com/reporting/689d4a4b-62fb-433f-bd37-b9e13a09f210'
+
+  press:{
+    create:'https://docs.google.com/forms/d/e/1FAIpQLSfpDjZwDGx6txxcr5msHKSO7gw2e74PQAUTvN9QpB5aFs_9_w/viewform?usp=dialog',
+    close:'https://docs.google.com/forms/d/e/1FAIpQLSdEJ-d-eyigKURRbiU1yYaocZPbm4o8VqAZPk3vQMj2S6RTPQ/viewform?usp=header',
+    dashboard:'https://lookerstudio.google.com/reporting/689d4a4b-62fb-433f-bd37-b9e13a09f210',
+    sheet:'https://docs.google.com/spreadsheets/d/1a_8Pfl1W0gr1bXkTqfhi2CFEdf_0c810JCSzlPtBtGc/edit?gid=1146505316#gid=1146505316'
   },
-  polish: {
-    create: 'https://docs.google.com/forms/d/e/1FAIpQLSdbm9pd9_rCP_u4E84QBQSaagYwFH4OspjQj-8vGZed7ui1uA/viewform?usp=dialog',
-    close:  'https://docs.google.com/forms/d/e/1FAIpQLSfVmpO0zBp7o8Gc-3csB1j_owkhY-4x7iuQOOBlRHxvMLAGDw/viewform?usp=dialog',
-    dashboard: 'https://lookerstudio.google.com/reporting/c0ef4699-10bb-4485-8df2-ed05ad447136'
+
+  polish:{
+    create:'https://docs.google.com/forms/d/e/1FAIpQLSdbm9pd9_rCP_u4E84QBQSaagYwFH4OspjQj-8vGZed7ui1uA/viewform?usp=dialog',
+    close:'https://docs.google.com/forms/d/e/1FAIpQLSfVmpO0zBp7o8Gc-3csB1j_owkhY-4x7iuQOOBlRHxvMLAGDw/viewform?usp=dialog',
+    dashboard:'https://lookerstudio.google.com/reporting/c0ef4699-10bb-4485-8df2-ed05ad447136',
+    sheet:'https://docs.google.com/spreadsheets/d/1Hd0O4321QHco52lyFDeS3qVlL6NSo5lq8EWGp7RBB4k/edit?gid=1146505316#gid=1146505316'
   }
+
 };
 
 function showView(id){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  try{ history.replaceState(null,'','?area='+id); }catch(e){}
+  try{history.replaceState(null,'','?area='+id);}catch(e){}
 }
+
 function openLink(url){
-  if(!url || url.includes('_LINK')) return alert('Link belum diisi.');
   window.open(url,'_blank');
 }
 
-/* direct link on load */
-const q = new URLSearchParams(location.search).get('area');
+const q=new URLSearchParams(location.search).get('area');
 if(q && document.getElementById(q)) showView(q);
+
 </script>
+
 </body>
 </html>
